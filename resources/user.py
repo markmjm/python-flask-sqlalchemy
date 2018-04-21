@@ -15,17 +15,13 @@ class UserRegister(Resource):
                         help="This field cannot be left blank")
     def post(self):
         data = UserRegister.parser.parse_args()
-        connection = sqlite3.connect('data.db')
-        cursor = connection.cursor()
 
         if UserModel.find_by_username(data['username']):
             return {"message": "User already exists."}, 400
 
-        query = "INSERT INTO users VALUES (NULL, ?, ?)"
-        cursor.execute(query, (data['username'], data['password']))
-
-        connection.commit()
-        connection.close()
+        # user = UserModel(data['username'], data['password'])  simplify
+        user = UserModel(**data)
+        user.save_to_db()
 
         return {"message": "User created successfully."}, 201
 
