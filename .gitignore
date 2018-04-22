@@ -113,8 +113,9 @@ venv.bak/
 .idea/python-beautifulsoup4.iml
 .idea/workspace.xml
 .idea/vcs.xml
-.idea/vcs.xml
 .idea/dataSources
 data.db
 /.idea/misc.xml
 /.idea/inspectionProfiles/Project_Default.xml
+__pycache__
+*.pyc
